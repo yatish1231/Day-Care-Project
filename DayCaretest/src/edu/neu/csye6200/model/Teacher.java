@@ -1,8 +1,10 @@
 package edu.neu.csye6200.model;
 
+import java.util.List;
+
 public class Teacher extends Person{
 	private int credits;
-
+	private List<Student> students;
 	public Teacher() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -20,6 +22,14 @@ public class Teacher extends Person{
 
 	public void setCredits(int credits) {
 		this.credits = credits;
+	}
+
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
 	
 	

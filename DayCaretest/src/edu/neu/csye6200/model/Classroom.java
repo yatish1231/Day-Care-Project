@@ -6,7 +6,7 @@ import java.util.List;
 public class Classroom {
 	private List<Student> students;
 	private List<Teacher> teachers;
-	private List<List<Student>> grouplist; 
+	private Group group;
 	private String classname;
 	private int classnum;
 	private int groups;
@@ -18,10 +18,19 @@ public class Classroom {
 		this.students = new ArrayList<Student>();
 		this.teachers = new ArrayList<Teacher>();
 		this.groups = 1;
-		this.grouplist = new ArrayList<List<Student>>();
+		//this.group = new Group();
 		this.classname = classname;
 		this.classnum = classnum;
 	}
+	
+	public Group getGroup() {
+		return group;
+	}
+
+	public void setGroup(Group group) {
+		this.group = group;
+	}
+
 	public List<Student> getStudents() {
 		return students;
 	}
@@ -58,12 +67,6 @@ public class Classroom {
 	public void setTeachernum(int teachernum) {
 		this.teachernum = teachernum;
 	}
-	public List<List<Student>> getGrouplist() {
-		return grouplist;
-	}
-	public void setGrouplist(List<List<Student>> grouplist) {
-		this.grouplist = grouplist;
-	}
 	public void addstudent(Student obj) {
 		
 		students.add(obj);
@@ -72,5 +75,11 @@ public class Classroom {
 	public int getsize() {
 		return this.students.size();
 	}
+	@Override
+	public String toString() {
+		return "Classroom [students=" + students + ", teachers=" + teachers + ", classname=" + classname + ", classnum=" + classnum + ", groups=" + groups + ", teachernum="
+				+ teachernum + "]";
+	}
+	
 	
 }

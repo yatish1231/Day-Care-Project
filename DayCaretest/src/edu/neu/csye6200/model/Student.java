@@ -74,6 +74,12 @@ public class Student extends Person{
 	public void setPhonenum(int phonenum) {
 		this.phonenum = phonenum;
 	}
+
+	@Override
+	public String toString() {
+		return "Student [grade=" + grade + ", age=" + age + ", parentfirstname=" + parentfirstname + ", parentlastname="
+				+ parentlastname + ", address=" + address + ", phonenum=" + phonenum + "]";
+	}
 	
 	
 	
