@@ -6,31 +6,48 @@ import java.util.List;
 public class Classroom {
 	private List<Student> students;
 	private List<Teacher> teachers;
-	private Group group;
+	private List<Group> groups;
 	private int classname;
 	private int classnum;
 	private int teachernum;
+	private int groupnum = 0; 
+	private int count = 0;
 	
 	
 	public Classroom(int classname, int classnum) {
 		super();
 		this.students = new ArrayList<Student>();
 		this.teachers = new ArrayList<Teacher>();
-		this.group = new Group();
+		this.groups = new ArrayList<Group>();
 		this.classname = classname;
 		this.classnum = classnum;
 	}
 	
-	public Group getGroup() {
-		return group;
+	public List<Group> getGroups() {
+		return groups;
 	}
-
-	public void setGroup(Group group) {
-		this.group = group;
+	public void setGroups(List<Group> groups) {
+		this.groups = groups;
 	}
-	public void addtogroup(int i, Student student) {
-		group.addtogroup(student);
-		group.setgroupnum(i);
+	public int getGroupnum() {
+		return groupnum;
+	}
+	public void setGroupnum(int groupnum) {
+		this.groupnum = groupnum;
+	}
+	public void addgroup() {
+		this.groups.add(new Group());
+		groups.get(count).setgroupnum(groupnum++);
+	}
+	public void addtogroup(Student student) {
+		if(groups.get(count).getStudents().size()<=Weights.getmaxstudents(student.getAge())) {
+			groups.get(count).addtogroup(student);
+		}
+		else {
+			count++;
+			this.addgroup();
+			addtogroup(student);
+		}
 	}
 
 	public List<Student> getStudents() {
