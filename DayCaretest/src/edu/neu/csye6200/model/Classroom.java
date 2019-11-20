@@ -40,7 +40,7 @@ public class Classroom {
 		groups.get(count).setgroupnum(groupnum++);
 	}
 	public void addtogroup(Student student) {
-		if(groups.get(count).getStudents().size()<=Weights.getmaxstudents(student.getAge())) {
+		if(groups.get(count).getStudents().size()<Weights.getmaxgroup(student.getAge())){
 			groups.get(count).addtogroup(student);
 		}
 		else {

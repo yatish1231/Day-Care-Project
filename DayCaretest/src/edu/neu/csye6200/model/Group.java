@@ -27,7 +27,6 @@ public class Group {
 	public void setgroupnum(int i) {
 		groupnum = i;
 	}
-	
 	public Teacher getTeacher() {
 		return teacher;
 	}

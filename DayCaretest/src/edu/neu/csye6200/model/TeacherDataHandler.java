@@ -19,7 +19,9 @@ public class TeacherDataHandler {
 		teacherList = fileutilobj.ReadTeacherCSV(this.fileName);
 	}
 
-	
+	public static List<Teacher> getteacherlist(){
+		return teacherList;
+	}
 	
 	
 	

@@ -51,6 +51,23 @@ public class Weights {
 			}
 			return 0;
 		}
+		public static int getmaxgroup(int age) {
+			if(age>=6 && age<=12) {
+				return 4;
+			}
+			if(age>=13 && age<=24) {
+				return 5;
+			}if(age>=25 && age<=35) {
+				return 6;
+			}if(age>=36 && age<=47) {
+				return 8;
+			}if(age>=48 && age<=59) {
+				return 12;
+			}if(age>= 60) {
+				return 15;
+			}
+			return 0;
+		}
 		public int getGroupsize() {
 			return groupsize;
 		}
