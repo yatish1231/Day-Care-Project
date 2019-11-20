@@ -16,12 +16,12 @@ public class assignstudent {
 
 	public static void toclass(Student obj) {
 		
-		if((Weights.getclasstype(obj.getAge())).getCategory().equals("Under12"))
+		if((Weights.getclasstype(obj.getAge())).getCategory() == 1)
 		{	
-			String name = Weights.getclasstype(obj.getAge()).getCategory();
+			int name = Weights.getclasstype(obj.getAge()).getCategory();
 			if((Classdatahandler.getclassrooms(name)).isEmpty()){
 				System.out.println("Entered here first");
-				Classroom classroom = new Classroom("Under12", counter[0]);
+				Classroom classroom = new Classroom(1, counter[0]);
 				Classdatahandler.addclass(classroom);
 				Classdatahandler.getclass(classroom).addstudent(obj);
 			}
@@ -31,12 +31,12 @@ public class assignstudent {
 				for (Classroom classroom: Classdatahandler.getclassrooms(name)) {
 					System.out.println("entered here");
 					System.out.println(classroom.getsize());
-					if(classroom.getsize()<= Weights.getmaxstudents(obj.getAge())-2){
+					if(classroom.getsize()<= Weights.getmaxstudents(obj.getAge())){
 						Classdatahandler.getclass(classroom).addstudent(obj);
 					}
 					else {
 						System.out.println("Entered here");
-						Classroom classroomnew = new Classroom("Under12", counter[0]++);
+						Classroom classroomnew = new Classroom(1, counter[0]++);
 						Classdatahandler.addclass(classroomnew);
 						Classdatahandler.getclass(classroomnew).addstudent(obj);
 					}
@@ -44,5 +44,6 @@ public class assignstudent {
 				
 			}
 		}
+		
 	}
 }

@@ -7,18 +7,16 @@ public class Classroom {
 	private List<Student> students;
 	private List<Teacher> teachers;
 	private Group group;
-	private String classname;
+	private int classname;
 	private int classnum;
-	private int groups;
 	private int teachernum;
 	
 	
-	public Classroom(String classname, int classnum) {
+	public Classroom(int classname, int classnum) {
 		super();
 		this.students = new ArrayList<Student>();
 		this.teachers = new ArrayList<Teacher>();
-		this.groups = 1;
-		//this.group = new Group();
+		this.group = new Group();
 		this.classname = classname;
 		this.classnum = classnum;
 	}
@@ -29,6 +27,10 @@ public class Classroom {
 
 	public void setGroup(Group group) {
 		this.group = group;
+	}
+	public void addtogroup(int i, Student student) {
+		group.addtogroup(student);
+		group.setgroupnum(i);
 	}
 
 	public List<Student> getStudents() {
@@ -43,10 +45,10 @@ public class Classroom {
 	public void setTeachers(List<Teacher> teachers) {
 		this.teachers = teachers;
 	}
-	public String getClassname() {
+	public int getClassname() {
 		return classname;
 	}
-	public void setClassname(String classname) {
+	public void setClassname(int classname) {
 		this.classname = classname;
 	}
 	public int getClassnum() {
@@ -54,12 +56,6 @@ public class Classroom {
 	}
 	public void setClassnum(int classnum) {
 		this.classnum = classnum;
-	}
-	public int getGroups() {
-		return groups;
-	}
-	public void setGroups(int groups) {
-		this.groups = groups;
 	}
 	public int getTeachernum() {
 		return teachernum;
@@ -73,11 +69,11 @@ public class Classroom {
 		
 	}
 	public int getsize() {
-		return this.students.size();
+		return students.size();
 	}
 	@Override
 	public String toString() {
-		return "Classroom [students=" + students + ", teachers=" + teachers + ", classname=" + classname + ", classnum=" + classnum + ", groups=" + groups + ", teachernum="
+		return "Classroom [students=" + students + ", teachers=" + teachers + ", classname=" + classname + ", classnum=" + classnum + ", teachernum="
 				+ teachernum + "]";
 	}
 	

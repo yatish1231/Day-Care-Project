@@ -6,11 +6,12 @@ import java.util.List;
 public class Group {
 	int groupnum;
 	private List<Student> students;
+	private Teacher teacher;
 
-	public Group(int groupnum) {
+	public Group() {
 		super();
 		this.students = new ArrayList<Student>();
-		this.groupnum = groupnum;
+		
 	}
 
 	public List<Student> getStudents() {
@@ -23,5 +24,19 @@ public class Group {
 	public void addtogroup(Student obj) {
 		this.students.add(obj);
 	}
+	public void setgroupnum(int i) {
+		groupnum = i;
+	}
 	
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+
+	public void assignteacher(Teacher obj) {
+		this.teacher = obj;
+	}
 }

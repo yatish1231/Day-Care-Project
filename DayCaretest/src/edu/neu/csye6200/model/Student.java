@@ -8,6 +8,7 @@ public class Student extends Person{
 	private String parentlastname;
 	private String address;
 	private int phonenum;
+	private Teacher teacher;
 	
 	
 	public Student() {
@@ -73,6 +74,14 @@ public class Student extends Person{
 
 	public void setPhonenum(int phonenum) {
 		this.phonenum = phonenum;
+	}
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 
 	@Override

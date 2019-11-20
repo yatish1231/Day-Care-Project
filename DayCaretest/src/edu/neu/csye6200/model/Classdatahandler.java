@@ -15,14 +15,14 @@ public class Classdatahandler {
 	private static List<Classroom> classlist5 = new ArrayList<Classroom>();
 	private static List<Classroom> classlist6 = new ArrayList<Classroom>();
 	private static List<List<Classroom>> allclasses = new ArrayList<List<Classroom>>();
-	private static HashMap<String, List<Classroom>> database = new HashMap<String, List<Classroom>>();
+	private static HashMap<Integer, List<Classroom>> database = new HashMap<Integer, List<Classroom>>();
 	static {
-		Classdatahandler.database.put("Under12", classlist1);
-		Classdatahandler.database.put("Under24", classlist2);
-		Classdatahandler.database.put("Under35", classlist3);
-		Classdatahandler.database.put("Under47", classlist4);
-		Classdatahandler.database.put("Under59", classlist5);
-		Classdatahandler.database.put("Over60", classlist6);
+		Classdatahandler.database.put(1, classlist1);
+		Classdatahandler.database.put(2, classlist2);
+		Classdatahandler.database.put(3, classlist3);
+		Classdatahandler.database.put(4, classlist4);
+		Classdatahandler.database.put(5, classlist5);
+		Classdatahandler.database.put(6, classlist6);
 		Classdatahandler.allclasses.add(classlist1);
 		Classdatahandler.allclasses.add(classlist2);
 		Classdatahandler.allclasses.add(classlist3);
@@ -33,7 +33,7 @@ public class Classdatahandler {
 	public Classdatahandler() {
 		// TODO Auto-generated constructor stub
 	}
-	public static List<Classroom> getclassrooms(String name){
+	public static List<Classroom> getclassrooms(int name){
 		return Classdatahandler.database.get(name);
 		
 	}
