@@ -4,7 +4,9 @@ import java.time.LocalDate;
 
 public class Immunization {
 	
-	LocalDate date;
-	Student student;
+	private LocalDate date;
+	private Student student;
+	private String record;
+	
 	
 }

@@ -87,8 +87,12 @@ public class Student extends Person{
 	@Override
 	public String toString() {
 		return "Student [grade=" + grade + ", age=" + age + ", parentfirstname=" + parentfirstname + ", parentlastname="
-				+ parentlastname + ", address=" + address + ", phonenum=" + phonenum + "]";
+				+ parentlastname + ", address=" + address + ", phonenum=" + phonenum + ", teacher=" + teacher
+				+ ", getId()=" + getId() + ", getFirstname()=" + getFirstname() + ", getLastname()=" + getLastname()
+				+ "]";
 	}
+
+	
 	
 	
 	

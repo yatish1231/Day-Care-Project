@@ -50,6 +50,7 @@ public class assignstudent {
 				Classroom classroom = new Classroom(2, counter[1]);
 				Classdatahandler.addclass(classroom);
 				Classdatahandler.getclass(classroom).addstudent(obj);
+				Classdatahandler.getclass(classroom).addgroup();
 				Classdatahandler.getclass(classroom).addtogroup(obj);
 			}
 		
