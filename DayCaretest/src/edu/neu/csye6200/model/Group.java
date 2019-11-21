@@ -35,7 +35,7 @@ public class Group {
 		this.teacher = teacher;
 	}
 
-	public void assignteacher(Teacher obj) {
-		this.teacher = obj;
+	public void assignteacher() {
+		this.teacher = TeacherDataHandler.fetchTeacher();
 	}
 }

@@ -36,8 +36,11 @@ public class Classroom {
 		this.groupnum = groupnum;
 	}
 	public void addgroup() {
-		this.groups.add(new Group());
+		Group t = new Group();
+		t.assignteacher();
+		this.groups.add(t);
 		groups.get(count).setgroupnum(groupnum++);
+		
 	}
 	public void addtogroup(Student student) {
 		if(groups.get(count).getStudents().size()<Weights.getmaxgroup(student.getAge())){

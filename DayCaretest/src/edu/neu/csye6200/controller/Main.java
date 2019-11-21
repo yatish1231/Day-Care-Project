@@ -40,7 +40,7 @@ public class Main {
 //		Main.addstudent("5,Jim,Thomas,24,Micheal,Thomas,0,Boston MA,55445");
 //		Main.addstudent("6,Jim,Thomas,26,Micheal,Thomas,0,Boston MA,55445");
 //		Studentview.viewall();
-		Main.addstudent("C:\\Users\\yccha\\git\\DayCare\\DayCaretest\\src\\edu\\neu\\csye6200\\Students.txt");
+		Main.addstudent("/Users/Sreekarsiddula/git/DayCare1/DayCaretest/src/edu/neu/csye6200/controller/Students.txt");
 		Studentview.viewall();
 		}
 	}
