@@ -6,6 +6,14 @@ import java.util.List;
 public class Group {
 	int groupnum;
 	private List<Student> students;
+	public int getGroupnum() {
+		return groupnum;
+	}
+
+	public void setGroupnum(int groupnum) {
+		this.groupnum = groupnum;
+	}
+
 	private Teacher teacher;
 
 	public Group() {

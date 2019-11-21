@@ -1,5 +1,7 @@
 package edu.neu.csye6200.model;
 
+import java.util.List;
+
 public class Student extends Person{
 
 	private int grade;
@@ -9,6 +11,7 @@ public class Student extends Person{
 	private String address;
 	private int phonenum;
 	private Teacher teacher;
+	private List<Immunization> record;
 	
 	
 	public Student() {
@@ -82,6 +85,15 @@ public class Student extends Person{
 
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
+	}
+	
+
+	public List<Immunization> getRecord() {
+		return record;
+	}
+
+	public void setRecord(List<Immunization> record) {
+		this.record = record;
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package edu.neu.csye6200.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.neu.csye6200.model.Classdatahandler;
 import edu.neu.csye6200.model.FileIO;
 import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.StudentFactory;
@@ -25,7 +26,6 @@ public class Main {
 		for(Student singlestudent: templist) {
 
 			assignstudent.toclass(singlestudent);
-
 		}
 
 		
@@ -40,8 +40,11 @@ public class Main {
 //		Main.addstudent("5,Jim,Thomas,24,Micheal,Thomas,0,Boston MA,55445");
 //		Main.addstudent("6,Jim,Thomas,26,Micheal,Thomas,0,Boston MA,55445");
 //		Studentview.viewall();
-		Main.addstudent("/Users/Sreekarsiddula/git/DayCare1/DayCaretest/src/edu/neu/csye6200/controller/Students.txt");
+		Main.addstudent("C:\\Users\\yccha\\git\\DayCare\\DayCaretest\\src\\edu\\neu\\csye6200\\Students.txt");
 		Studentview.viewall();
+		
+		FileIO fileutil = new FileIO();
+		fileutil.writeStudentCSV("StudentDatabase", Classdatahandler.getclassrooms(1).get(0));
 		}
 	}
 

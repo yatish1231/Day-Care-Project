@@ -39,7 +39,7 @@ public class Classroom {
 		Group t = new Group();
 		t.assignteacher();
 		this.groups.add(t);
-		groups.get(count).setgroupnum(groupnum++);
+		groups.get(count).setgroupnum(++groupnum);
 		
 	}
 	public void addtogroup(Student student) {

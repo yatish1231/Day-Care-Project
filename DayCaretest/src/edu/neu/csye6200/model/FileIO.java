@@ -14,12 +14,11 @@ public class FileIO {
 	
 public List<Teacher> ReadTeacherCSV(String fileName) {
 		
-		FileReader fr;
 		List<Teacher> teacherList = new ArrayList<>();
 		
 		try {
-			fr = new FileReader(fileName);
-			BufferedReader csvReader = new BufferedReader(fr);
+//			fr = new FileReader(fileName);
+			BufferedReader csvReader = new BufferedReader(new FileReader(fileName));
 			String row;
 			while ((row = csvReader.readLine()) != null)
 			{
@@ -65,7 +64,7 @@ public void writeStudentCSV (String fileName, Classroom obj) {
 	
 		for (Student student: section.getStudents()) {
 		
-			String line = obj.getClassnum() + "," + obj.getClassname() + "," + student.getId() + "," + student.getFirstname() + "," + student.getLastname() + "," + student.getAge() + "," + section.getTeacher() ; 
+			String line = obj.getClassnum() + "," + obj.getClassname() + "," + student.getId() + "," + student.getFirstname() + "," + student.getLastname() + "," + student.getAge() + "," + section.getTeacher().getFirstname() ; 
 		
 			csvData.add(line);
 		}
@@ -82,20 +81,7 @@ public void writeStudentCSV (String fileName, Classroom obj) {
 	catch (Exception e) {
 		e.printStackTrace();
 	}	
-	
-	
 }
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
