@@ -1,16 +1,36 @@
 package edu.neu.csye6200;
-import java.sql.*;
+//import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Date; 
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import com.oracle.*;
 
 public class Tablehandling {
 	
 	 private static final String COMMA_DELIMITER = ",";
 
 	 public static void main(String[] args) throws Exception {		 
-		 createStudentobjdbTable();	
-		 insertStudentobjdbTable("1,SOMANWITA,DEY,26,GOUTAM,DEY,SAHAPUR,9916659468");
-		 selectStudentobjdbTable(); 
+	//	 createStudentobjdbTable();	
+	//	 insertStudentobjdbTable("1,SOMANWITA,DEY,26,GOUTAM,DEY,SAHAPUR,9916659468");
+	//	 selectStudentobjdbTable(); 
+		 
+	//	 createImmunizationdbTable();
+	//	 insertImmunizationdbTable("1,VARICELLA,2011-12-31");
+	//	 selectImmunizationdbTable();
+		 
+	//	 createRegistrationdbTable();
+	//	 insertRegistrationdbTable("1,2011-01-01");
+	//	 selectRegistrationdbTable();
+		 
+		 createClassroomdbTable();
+		 insertClassroomdbTable("6,komal,2,3");
+		 selectClassroomdbTable();
+		 
 	 }
 	 
 	 public static Connection getConnection() throws Exception {
@@ -43,7 +63,6 @@ public class Tablehandling {
 		 										+ "PARENTLASTNAME VARCHAR(45) NOT NULL, "
 		 										+ "ADDRESS VARCHAR(255) NOT NULL, "
 		 										+ "PHONE VARCHAR(10) NOT NULL)";
-//		 										+ "PRIMARY KEY (STUDENTID))";
                  
 		 try {
 			 Connection con = getConnection();
@@ -66,7 +85,6 @@ public class Tablehandling {
 		 String phone = tokens[7];
 			 
 		 final String INSERT_Studentobjdb_TABLE_SQL="INSERT INTO Studentobjdb(STUDENTID, FIRSTNAME, LASTNAME, AGE, PARENTFIRSTNAME, PARENTLASTNAME, ADDRESS, PHONE) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
 	 
 		 try {
 			 Connection con = getConnection();
@@ -113,7 +131,200 @@ public class Tablehandling {
 			
 	 }
 	 
+	 public static void createImmunizationdbTable() throws Exception{
+		 
+		 final String CREATE_Immunizationdb_TABLE_SQL="CREATE TABLE IF NOT EXISTS Immunizationdb("
+		 										+ "STUDENTID INT NOT NULL PRIMARY KEY, "
+		 										+ "VACCINAION_NAME VARCHAR(45) NOT NULL, "
+		 										+ "DATE_OF_VACCINATION DATE NOT NULL)";
+                 
+		 try {
+			 Connection con = getConnection();
+			 PreparedStatement createImmunizationdbtable = con.prepareStatement(CREATE_Immunizationdb_TABLE_SQL);
+			 createImmunizationdbtable.executeUpdate();	
+		 	}catch(Exception e){System.out.println(e);}
+		 	finally {System.out.println("Immunizationdb table Created");};
+	 }
+	 
+	 public static void insertImmunizationdbTable(String csvData) throws Exception{
+		 	 		 
+		 String[] tokens = csvData.split(COMMA_DELIMITER);	 
+		 
+		 int studentid = new Integer(tokens[0]);
+		 String vaccine_name = tokens[1];
+		 String date_of_vaccination = tokens[2];
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+		 java.util.Date date = sdf.parse(date_of_vaccination);
+  		 java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+		 
+		 final String INSERT_Immunizationdb_TABLE_SQL="INSERT INTO Immunizationdb(STUDENTID, VACCINAION_NAME, DATE_OF_VACCINATION) VALUES (?, ?, ?)";
+ 
+		 try {
+			 Connection con = getConnection();
+			 PreparedStatement insertImmunizationdbtable = con.prepareStatement(INSERT_Immunizationdb_TABLE_SQL);
+			 insertImmunizationdbtable.setInt(1, studentid);
+			 insertImmunizationdbtable.setString(2, vaccine_name);
+			 insertImmunizationdbtable.setDate(3, sqlDate);
+			 
+			 insertImmunizationdbtable.executeUpdate();	
+		 }catch(Exception e){System.out.println(e);}
+		 finally {System.out.println("Inserted in Immunizationdb");};
+	 }
+	 
+	 public static List<String> selectImmunizationdbTable() throws Exception{
+		 
+		 final String SELECT_Immunizationdb_TABLE_SQL="SELECT * FROM Immunizationdb";	 						         
+		 List<String> immunization_array = new ArrayList<>();
+		 
+		 try {
+			 Connection con = getConnection();
+			 PreparedStatement selectImmunizationdbtable = con.prepareStatement(SELECT_Immunizationdb_TABLE_SQL);
+			 ResultSet result = selectImmunizationdbtable.executeQuery();	 
+			 
+			 while(result.next()) {
+				 String str = result.getString("STUDENTID") + " "
+						 	+ result.getString("VACCINAION_NAME")+  " " 
+						 	+ result.getDate("DATE_OF_VACCINATION")+  " ";
+		
+				 System.out.println(str);
+				 immunization_array.add(str);
+			 }
+		 	}catch(Exception e){System.out.println(e);}
+		 	finally {System.out.println("Select from Immunizationdb table");};
+		 	return immunization_array;
+			
+	 }
+	 
+	 public static void createRegistrationdbTable() throws Exception{
+		 
+		 final String CREATE_Registrationdb_TABLE_SQL="CREATE TABLE IF NOT EXISTS Registrationdb("
+		 										+ "STUDENTID INT NOT NULL PRIMARY KEY, "
+		 										+ "DATE_OF_REGISTRATION DATE NOT NULL)";
+                 
+		 try {
+			 Connection con = getConnection();
+			 PreparedStatement createRegistrationdbtable = con.prepareStatement(CREATE_Registrationdb_TABLE_SQL);
+			 createRegistrationdbtable.executeUpdate();	
+		 	}catch(Exception e){System.out.println(e);}
+		 	finally {System.out.println("Registrationdb table Created");};
+	 }
+	 
+	 public static void insertRegistrationdbTable(String csvData) throws Exception{
+		 	 		 
+		 String[] tokens = csvData.split(COMMA_DELIMITER);	 
+		 
+		 int studentid = new Integer(tokens[0]);
+		 String date_of_registration = tokens[1];
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+		 java.util.Date date = sdf.parse(date_of_registration);
+  		 java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+		 
+		 final String INSERT_Registrationdb_TABLE_SQL="INSERT INTO Registrationdb(STUDENTID, DATE_OF_REGISTRATION) VALUES (?, ?)";
+ 
+		 try {
+			 Connection con = getConnection();
+			 PreparedStatement insertRegistrationdbtable = con.prepareStatement(INSERT_Registrationdb_TABLE_SQL);
+			 insertRegistrationdbtable.setInt(1, studentid);
+			 insertRegistrationdbtable.setDate(2, sqlDate);
+			 
+			 insertRegistrationdbtable.executeUpdate();	
+		 }catch(Exception e){System.out.println(e);}
+		 finally {System.out.println("Inserted in Registrationdb");};
+	 }
+	 
+	 public static List<String> selectRegistrationdbTable() throws Exception{
+		 
+		 final String SELECT_Registrationdb_TABLE_SQL="SELECT * FROM Registrationdb";	 						         
+		 List<String> Registration_array = new ArrayList<>();
+		 
+		 try {
+			 Connection con = getConnection();
+			 PreparedStatement selectRegistrationdbtable = con.prepareStatement(SELECT_Registrationdb_TABLE_SQL);
+			 ResultSet result = selectRegistrationdbtable.executeQuery();	 
+			 
+			 while(result.next()) {
+				 String str = result.getString("STUDENTID") + " "
+						 	+ result.getDate("DATE_OF_REGISTRATION")+  " ";
+		
+				 System.out.println(str);
+				 Registration_array.add(str);
+			 }
+		 	}catch(Exception e){System.out.println(e);}
+		 	finally {System.out.println("Select from Registrationdb table");};
+		 	return Registration_array;
+			
+	 }
+	 
+	 
+	 public static void createClassroomdbTable() throws Exception{
+		 
+		 final String CREATE_Classroomdb_TABLE_SQL="CREATE TABLE IF NOT EXISTS Classroomdb("
+		 										+ "STUDENTID INT NOT NULL PRIMARY KEY, "
+		 										+ "TeacherFIRSTNAME VARCHAR(45) NOT NULL, "
+		 										+ "STUDENT_TYPE INT NOT NULL, "
+		 										+ "STUDENT_GROUP INT NOT NULL)";
+                 
+		 try {
+			 Connection con = getConnection();
+			 PreparedStatement createClassroomdbtable = con.prepareStatement(CREATE_Classroomdb_TABLE_SQL);
+			 createClassroomdbtable.executeUpdate();	
+		 	}catch(Exception e){System.out.println(e);}
+		 	finally {System.out.println("Classroomdb table Created");};
+	 }
+	 
+	 public static void insertClassroomdbTable(String csvData) throws Exception{
+		 	 		 
+		 String[] tokens = csvData.split(COMMA_DELIMITER);	 
+		 
+		 int studentid = new Integer(tokens[0]);
+		 String teacherfirstname = tokens[1];
+		 int student_type = new Integer(tokens[2]);
+		 int student_group = new Integer(tokens[3]);
+		
+		 
+		 final String INSERT_Classroomdb_TABLE_SQL="INSERT INTO Classroomdb(STUDENTID, TeacherFIRSTNAME, STUDENT_TYPE, STUDENT_GROUP) VALUES (?, ?, ?, ?)";
+ 
+		 try {
+			 Connection con = getConnection();
+			 PreparedStatement insertClassroomdbtable = con.prepareStatement(INSERT_Classroomdb_TABLE_SQL);
+			 insertClassroomdbtable.setInt(1, studentid);
+			 insertClassroomdbtable.setString(2, teacherfirstname);
+			 insertClassroomdbtable.setInt(3, student_type);
+			 insertClassroomdbtable.setInt(4, student_group);
 
+			 
+			 insertClassroomdbtable.executeUpdate();	
+		 }catch(Exception e){System.out.println(e);}
+		 finally {System.out.println("Inserted in Classroomdb");};
+	 }
+	 
+	 public static List<String> selectClassroomdbTable() throws Exception{
+		 
+		 final String SELECT_Classroomdb_TABLE_SQL="SELECT * FROM Classroomdb";	 						         
+		 List<String> Classroom_array = new ArrayList<>();
+		 
+		 try {
+			 Connection con = getConnection();
+			 PreparedStatement selectClassroomdbtable = con.prepareStatement(SELECT_Classroomdb_TABLE_SQL);
+			 ResultSet result = selectClassroomdbtable.executeQuery();	 
+			 
+			 while(result.next()) {
+				 String str = result.getString("STUDENTID") + " "
+						 	+ result.getString("TeacherFIRSTNAME")+  " "
+				 			+ result.getString("STUDENT_TYPE")+  " "
+				 			+ result.getString("STUDENT_GROUP")+  " ";
+		
+				 System.out.println(str);
+				 Classroom_array.add(str);
+			 }
+		 	}catch(Exception e){System.out.println(e);}
+		 	finally {System.out.println("Select from Classroomdbdb table");};
+		 	return Classroom_array;
+			
+	 }
+	 
+
+		 
 
 
 }
