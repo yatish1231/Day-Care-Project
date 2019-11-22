@@ -1,0 +1,6 @@
+1,Sai,Sreekar,100
+2,yatish,Chandra,150
+3,Prashanthi,Matam,200
+4,Anchal,Mishra,300
+5,Dan,Peters,450
+6,Charmiben,Rana,500

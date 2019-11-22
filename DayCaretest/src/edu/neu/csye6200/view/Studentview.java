@@ -5,6 +5,7 @@ import java.util.List;
 import edu.neu.csye6200.model.Classdatahandler;
 import edu.neu.csye6200.model.Classroom;
 import edu.neu.csye6200.model.Group;
+import edu.neu.csye6200.model.Registration;
 import edu.neu.csye6200.model.Student;
 
 public class Studentview {
@@ -24,4 +25,7 @@ public class Studentview {
 				}
 			}
 		}
+	public static void viewRegistration() {
+		System.out.println(Registration.getRegistrationRecord());
+	}
 	}

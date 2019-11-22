@@ -3,10 +3,14 @@ package edu.neu.csye6200.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
 import edu.neu.csye6200.model.Classdatahandler;
 import edu.neu.csye6200.model.FileIO;
 import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.StudentFactory;
+import edu.neu.csye6200.view.MainFrame;
 import edu.neu.csye6200.view.Studentview;
 
 public class Main {
@@ -32,6 +36,7 @@ public class Main {
 
 		}
 	public static void main(String[] args) {
+		SwingUtilities.invokeLater(()->new MainFrame());
 		// TODO Auto-generated method stub
 //		Main.addstudent("1,Jim,Thomas,9,Micheal,Thomas,0,Boston MA,55445");
 //		Main.addstudent("2,Jim,Thomas,7,Micheal,Thomas,0,Boston MA,55445");
@@ -42,9 +47,9 @@ public class Main {
 //		Studentview.viewall();
 		Main.addstudent("C:\\Users\\yccha\\git\\DayCare\\DayCaretest\\src\\edu\\neu\\csye6200\\Students.txt");
 		Studentview.viewall();
-		
+		Studentview.viewRegistration();
 		FileIO fileutil = new FileIO();
-		fileutil.writeStudentCSV("StudentDatabase", Classdatahandler.getclassrooms(1).get(0));
+		fileutil.writeStudentCSV("StudentDatabase.txt", Classdatahandler.getclassrooms(1).get(0));
 		}
 	}
 
