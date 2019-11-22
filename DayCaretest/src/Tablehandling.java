@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import com.oracle.*;
 
 public class Tablehandling {
 	
@@ -23,14 +22,9 @@ public class Tablehandling {
 	//	 insertImmunizationdbTable("1,VARICELLA,2011-12-31");
 	//	 selectImmunizationdbTable();
 		 
-	//	 createRegistrationdbTable();
-	//	 insertRegistrationdbTable("1,2011-01-01");
-	//	 selectRegistrationdbTable();
-		 
-		 createClassroomdbTable();
-		 insertClassroomdbTable("6,komal,2,3");
-		 selectClassroomdbTable();
-		 
+		 createRegistrationdbTable();
+		 insertRegistrationdbTable("1,2011-01-01");
+		 selectRegistrationdbTable();
 	 }
 	 
 	 public static Connection getConnection() throws Exception {
@@ -255,76 +249,6 @@ public class Tablehandling {
 			
 	 }
 	 
-	 
-	 public static void createClassroomdbTable() throws Exception{
-		 
-		 final String CREATE_Classroomdb_TABLE_SQL="CREATE TABLE IF NOT EXISTS Classroomdb("
-		 										+ "STUDENTID INT NOT NULL PRIMARY KEY, "
-		 										+ "TeacherFIRSTNAME VARCHAR(45) NOT NULL, "
-		 										+ "STUDENT_TYPE INT NOT NULL, "
-		 										+ "STUDENT_GROUP INT NOT NULL)";
-                 
-		 try {
-			 Connection con = getConnection();
-			 PreparedStatement createClassroomdbtable = con.prepareStatement(CREATE_Classroomdb_TABLE_SQL);
-			 createClassroomdbtable.executeUpdate();	
-		 	}catch(Exception e){System.out.println(e);}
-		 	finally {System.out.println("Classroomdb table Created");};
-	 }
-	 
-	 public static void insertClassroomdbTable(String csvData) throws Exception{
-		 	 		 
-		 String[] tokens = csvData.split(COMMA_DELIMITER);	 
-		 
-		 int studentid = new Integer(tokens[0]);
-		 String teacherfirstname = tokens[1];
-		 int student_type = new Integer(tokens[2]);
-		 int student_group = new Integer(tokens[3]);
-		
-		 
-		 final String INSERT_Classroomdb_TABLE_SQL="INSERT INTO Classroomdb(STUDENTID, TeacherFIRSTNAME, STUDENT_TYPE, STUDENT_GROUP) VALUES (?, ?, ?, ?)";
- 
-		 try {
-			 Connection con = getConnection();
-			 PreparedStatement insertClassroomdbtable = con.prepareStatement(INSERT_Classroomdb_TABLE_SQL);
-			 insertClassroomdbtable.setInt(1, studentid);
-			 insertClassroomdbtable.setString(2, teacherfirstname);
-			 insertClassroomdbtable.setInt(3, student_type);
-			 insertClassroomdbtable.setInt(4, student_group);
-
-			 
-			 insertClassroomdbtable.executeUpdate();	
-		 }catch(Exception e){System.out.println(e);}
-		 finally {System.out.println("Inserted in Classroomdb");};
-	 }
-	 
-	 public static List<String> selectClassroomdbTable() throws Exception{
-		 
-		 final String SELECT_Classroomdb_TABLE_SQL="SELECT * FROM Classroomdb";	 						         
-		 List<String> Classroom_array = new ArrayList<>();
-		 
-		 try {
-			 Connection con = getConnection();
-			 PreparedStatement selectClassroomdbtable = con.prepareStatement(SELECT_Classroomdb_TABLE_SQL);
-			 ResultSet result = selectClassroomdbtable.executeQuery();	 
-			 
-			 while(result.next()) {
-				 String str = result.getString("STUDENTID") + " "
-						 	+ result.getString("TeacherFIRSTNAME")+  " "
-				 			+ result.getString("STUDENT_TYPE")+  " "
-				 			+ result.getString("STUDENT_GROUP")+  " ";
-		
-				 System.out.println(str);
-				 Classroom_array.add(str);
-			 }
-		 	}catch(Exception e){System.out.println(e);}
-		 	finally {System.out.println("Select from Classroomdbdb table");};
-		 	return Classroom_array;
-			
-	 }
-	 
-
-		 
 
 
 }
