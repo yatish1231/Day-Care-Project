@@ -7,14 +7,17 @@ public class Immunization {
 	
 	private LocalDate date;
 	private Calendar calender; 
-	private Student student;
+	//private Student student;
 	private String record;
 	private int id;
 	private int shotnumber;
 	
-	public Immunization() {
+	public Immunization(int id,String record,int shotnumber) {
 		super();
 		this.calender = Calendar.getInstance();
+		this.id = id;
+		this.record = record;
+		this.shotnumber = shotnumber;
 	}
 	public LocalDate getDate() {
 		return date;
@@ -37,12 +40,12 @@ public class Immunization {
 	public void setYear(int obj) {
 		calender.set(Calendar.YEAR, obj);
 	}
-	public Student getStudent() {
-		return student;
-	}
-	public void setStudent(Student student) {
-		this.student = student;
-	}
+//	public Student getStudent() {
+//		return student;
+//	}
+//	public void setStudent(Student student) {
+//		this.student = student;
+//	}
 	public String getRecord() {
 		return record;
 	}

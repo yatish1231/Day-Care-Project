@@ -64,7 +64,7 @@ public void writeStudentCSV (String fileName, Classroom obj) {
 	
 		for (Student student: section.getStudents()) {
 		
-			String line = obj.getClassnum() + "," + obj.getClassname() + "," + student.getId() + "," + student.getFirstname() + "," + student.getLastname() + "," + student.getAge() + "," + section.getTeacher().getFirstname() ; 
+			String line = obj.getClassnum() + "," + obj.getClassname() + "," + student.getId() + "," + student.getFirstname() + "," + student.getLastname() + "," + student.getAge() + "," + section.getTeacher(); 
 		
 			csvData.add(line);
 		}
@@ -82,6 +82,34 @@ public void writeStudentCSV (String fileName, Classroom obj) {
 		e.printStackTrace();
 	}	
 }
+
+
+
+public List<Vaccine> readImmunizationRulesCSV (String fileName) {
+	
+	List<Vaccine> csvData = new ArrayList<>();
+	
+	try {
+		BufferedReader csvReader = new BufferedReader(new FileReader(fileName));
+		String row;
+		while ((row = csvReader.readLine()) != null)
+		{
+			csvData.add(new Vaccine().getObject(row));
+		}
+		csvReader.close();			
+	}
+	catch(Exception e) {
+		e.printStackTrace();
+		}
+	return csvData;
+
+}
+	
+
+
+
+
+
 }
 
 
