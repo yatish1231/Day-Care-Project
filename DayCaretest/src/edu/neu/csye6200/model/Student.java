@@ -11,12 +11,13 @@ public class Student extends Person{
 	private String address;
 	private int phonenum;
 	private Teacher teacher;
-	private List<Immunization> record;
+	private List<Vaccine> record;
 	
 	
 	public Student() {
 		super();
 		// TODO Auto-generated constructor stub
+		this.setRecord();   // Instantiates the Vaccination list associated to the student with doses set to 0
 	}
 
 	public Student(int grade, int age, String parentfirstname, String parentlastname, String address, int phonenum) {
@@ -27,6 +28,8 @@ public class Student extends Person{
 		this.parentlastname = parentlastname;
 		this.address = address;
 		this.phonenum = phonenum;
+		this.setRecord();   // Instantiates the Vaccination list associated to the student with doses set to 0
+		
 	}
 
 
@@ -88,12 +91,18 @@ public class Student extends Person{
 	}
 	
 
-	public List<Immunization> getRecord() {
+	public List<Vaccine> getRecord() {
 		return record;
 	}
 
-	public void setRecord(List<Immunization> record) {
-		this.record = record;
+	public void setRecord() {
+			ImmunizationFactory obj = new ImmunizationFactory();
+			
+			this.record = obj.studentImmunizationRequirement();	
+	}
+	public List<ImmunizationChecker> getImmuStatus() {
+		
+		return new ImmunizationChecker().checkStatus(new ImmunizationRules(), this.record);
 	}
 
 	@Override
