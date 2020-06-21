@@ -1,0 +1,6 @@
+1,Hib,4
+2,DTaP,4
+3,Polio,3
+4,HepB,3
+5,MMR,1
+6,Var,1

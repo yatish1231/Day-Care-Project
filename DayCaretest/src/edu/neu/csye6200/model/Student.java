@@ -1,5 +1,6 @@
 package edu.neu.csye6200.model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Student extends Person{
@@ -12,7 +13,7 @@ public class Student extends Person{
 	private int phonenum;
 	private Teacher teacher;
 	private List<Vaccine> record;
-	
+	private LocalDate regDate;
 	
 	public Student() {
 		super();
@@ -20,7 +21,7 @@ public class Student extends Person{
 		this.setRecord();   // Instantiates the Vaccination list associated to the student with doses set to 0
 	}
 
-	public Student(int grade, int age, String parentfirstname, String parentlastname, String address, int phonenum) {
+	public Student(int grade, int age, String parentfirstname, String parentlastname, String address, int phonenum, LocalDate regDate) {
 		super();
 		this.grade = grade;
 		this.age = age;
@@ -28,11 +29,21 @@ public class Student extends Person{
 		this.parentlastname = parentlastname;
 		this.address = address;
 		this.phonenum = phonenum;
+		this.regDate = regDate;
 		this.setRecord();   // Instantiates the Vaccination list associated to the student with doses set to 0
 		
 	}
 
 
+
+
+	public LocalDate getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(LocalDate regDate) {
+		this.regDate = regDate;
+	}
 
 	public int getAge() {
 		return age;
@@ -100,9 +111,13 @@ public class Student extends Person{
 			
 			this.record = obj.studentImmunizationRequirement();	
 	}
+	
+	public void setRecord(List<Vaccine> obj) {
+		this.record = obj;
+	}
 	public List<ImmunizationChecker> getImmuStatus() {
 		
-		return new ImmunizationChecker().checkStatus(new ImmunizationRules(), this.record);
+		return new ImmunizationChecker().checkStatus(this.record);
 	}
 
 	@Override

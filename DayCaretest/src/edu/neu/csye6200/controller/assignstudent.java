@@ -6,7 +6,7 @@ import java.util.List;
 
 import edu.neu.csye6200.model.Classdatahandler;
 import edu.neu.csye6200.model.Classroom;
-import edu.neu.csye6200.model.Registration;
+//import edu.neu.csye6200.model.Registration;
 import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.Weights;
 
@@ -26,7 +26,7 @@ public class assignstudent {
 				Classdatahandler.getclass(classroom).addstudent(obj);
 				Classdatahandler.getclass(classroom).addgroup();
 				Classdatahandler.getclass(classroom).addtogroup(obj);
-				Registration.RegisterUsingCSV(obj);
+//				Registration.RegisterUsingCSV(obj);
 			}
 		
 			else{
@@ -34,14 +34,14 @@ public class assignstudent {
 					if(classroom.getsize()<= Weights.getmaxstudents(obj.getAge())){
 						Classdatahandler.getclass(classroom).addstudent(obj);
 						Classdatahandler.getclass(classroom).addtogroup(obj);
-						Registration.RegisterUsingCSV(obj);
+//						Registration.RegisterUsingCSV(obj);
 					}
 					else {
 						Classroom classroomnew = new Classroom(1, counter[0]++);
 						Classdatahandler.addclass(classroomnew);
 						Classdatahandler.getclass(classroomnew).addstudent(obj);
 						Classdatahandler.getclass(classroom).addtogroup(obj);
-						Registration.RegisterUsingCSV(obj);
+//						Registration.RegisterUsingCSV(obj);
 					}
 				}
 				
@@ -56,7 +56,7 @@ public class assignstudent {
 				Classdatahandler.getclass(classroom).addstudent(obj);
 				Classdatahandler.getclass(classroom).addgroup();
 				Classdatahandler.getclass(classroom).addtogroup(obj);
-				Registration.RegisterUsingCSV(obj);
+//				Registration.RegisterUsingCSV(obj);
 			}
 		
 			else{
@@ -64,14 +64,14 @@ public class assignstudent {
 					if(classroom.getsize()<= Weights.getmaxstudents(obj.getAge())){
 						Classdatahandler.getclass(classroom).addstudent(obj);
 						Classdatahandler.getclass(classroom).addtogroup(obj);
-						Registration.RegisterUsingCSV(obj);
+//						Registration.RegisterUsingCSV(obj);
 					}
 					else {
 						Classroom classroomnew = new Classroom(2, counter[1]++);
 						Classdatahandler.addclass(classroomnew);
 						Classdatahandler.getclass(classroomnew).addstudent(obj);
 						Classdatahandler.getclass(classroom).addtogroup(obj);
-						Registration.RegisterUsingCSV(obj);
+//						Registration.RegisterUsingCSV(obj);
 					}
 				}
 				
@@ -86,7 +86,7 @@ public class assignstudent {
 				Classdatahandler.getclass(classroom).addstudent(obj);
 				Classdatahandler.getclass(classroom).addgroup();
 				Classdatahandler.getclass(classroom).addtogroup(obj);
-				Registration.RegisterUsingCSV(obj);
+//				Registration.RegisterUsingCSV(obj);
 			}
 		
 			else{
@@ -94,14 +94,14 @@ public class assignstudent {
 					if(classroom.getsize()<= Weights.getmaxstudents(obj.getAge())){
 						Classdatahandler.getclass(classroom).addstudent(obj);
 						Classdatahandler.getclass(classroom).addtogroup(obj);
-						Registration.RegisterUsingCSV(obj);
+//						Registration.RegisterUsingCSV(obj);
 					}
 					else {
 						Classroom classroomnew = new Classroom(3, counter[2]++);
 						Classdatahandler.addclass(classroomnew);
 						Classdatahandler.getclass(classroomnew).addstudent(obj);
 						Classdatahandler.getclass(classroom).addtogroup(obj);
-						Registration.RegisterUsingCSV(obj);
+//						Registration.RegisterUsingCSV(obj);
 					}
 				}
 				
@@ -116,7 +116,7 @@ public class assignstudent {
 				Classdatahandler.getclass(classroom).addstudent(obj);
 				Classdatahandler.getclass(classroom).addgroup();
 				Classdatahandler.getclass(classroom).addtogroup(obj);
-				Registration.RegisterUsingCSV(obj);
+				//Registration.RegisterUsingCSV(obj);
 			}
 		
 			else{
@@ -124,14 +124,14 @@ public class assignstudent {
 					if(classroom.getsize()<= Weights.getmaxstudents(obj.getAge())){
 						Classdatahandler.getclass(classroom).addstudent(obj);
 						Classdatahandler.getclass(classroom).addtogroup(obj);
-						Registration.RegisterUsingCSV(obj);
+						//Registration.RegisterUsingCSV(obj);
 					}
 					else {
 						Classroom classroomnew = new Classroom(4, counter[3]++);
 						Classdatahandler.addclass(classroomnew);
 						Classdatahandler.getclass(classroomnew).addstudent(obj);
 						Classdatahandler.getclass(classroom).addtogroup(obj);
-						Registration.RegisterUsingCSV(obj);
+						//Registration.RegisterUsingCSV(obj);
 					}
 				}
 				
@@ -146,7 +146,7 @@ public class assignstudent {
 				Classdatahandler.getclass(classroom).addstudent(obj);
 				Classdatahandler.getclass(classroom).addgroup();
 				Classdatahandler.getclass(classroom).addtogroup(obj);
-				Registration.RegisterUsingCSV(obj);
+				//Registration.RegisterUsingCSV(obj);
 			}
 		
 			else{
@@ -154,14 +154,14 @@ public class assignstudent {
 					if(classroom.getsize()<= Weights.getmaxstudents(obj.getAge())){
 						Classdatahandler.getclass(classroom).addstudent(obj);
 						Classdatahandler.getclass(classroom).addtogroup(obj);
-						Registration.RegisterUsingCSV(obj);
+						//Registration.RegisterUsingCSV(obj);
 					}
 					else {
 						Classroom classroomnew = new Classroom(5, counter[4]++);
 						Classdatahandler.addclass(classroomnew);
 						Classdatahandler.getclass(classroomnew).addstudent(obj);
 						Classdatahandler.getclass(classroom).addtogroup(obj);
-						Registration.RegisterUsingCSV(obj);
+						//Registration.RegisterUsingCSV(obj);
 					}
 				}
 				
@@ -176,7 +176,7 @@ public class assignstudent {
 				Classdatahandler.getclass(classroom).addstudent(obj);
 				Classdatahandler.getclass(classroom).addgroup();
 				Classdatahandler.getclass(classroom).addtogroup(obj);
-				Registration.RegisterUsingCSV(obj);
+				//Registration.RegisterUsingCSV(obj);
 			}
 		
 			else{
@@ -184,14 +184,14 @@ public class assignstudent {
 					if(classroom.getsize()<= Weights.getmaxstudents(obj.getAge())){
 						Classdatahandler.getclass(classroom).addstudent(obj);
 						Classdatahandler.getclass(classroom).addtogroup(obj);
-						Registration.RegisterUsingCSV(obj);
+						//Registration.RegisterUsingCSV(obj);
 					}
 					else {
 						Classroom classroomnew = new Classroom(6, counter[5]++);
 						Classdatahandler.addclass(classroomnew);
 						Classdatahandler.getclass(classroomnew).addstudent(obj);
 						Classdatahandler.getclass(classroom).addtogroup(obj);
-						Registration.RegisterUsingCSV(obj);
+						//Registration.RegisterUsingCSV(obj);
 					}
 				}
 				

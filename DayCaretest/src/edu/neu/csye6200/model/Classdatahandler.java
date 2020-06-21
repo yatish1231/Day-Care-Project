@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Classdatahandler {
+public class Classdatahandler extends AbstractClassdatahandler{
 
 	
 	private static List<Classroom> classlist1 = new ArrayList<Classroom>();

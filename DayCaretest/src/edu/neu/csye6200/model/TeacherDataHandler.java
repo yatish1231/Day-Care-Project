@@ -1,16 +1,17 @@
 package edu.neu.csye6200.model;
 
 
+import edu.neu.csye6200.controller.Main;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeacherDataHandler {
+public class TeacherDataHandler extends AbstractTeacherDataHandler{
 
 	
 // 1,Sai,Sreekar,100    ( Format of Data in teacherList) 
 	
 	public static List<Teacher> teacherList = new ArrayList<>(); // Holds all the data related to Teachers
-	private static final String fileName = "C:\\Users\\yccha\\git\\DayCare\\DayCaretest\\src\\edu\\neu\\csye6200\\Teachers.txt";
+	private static final String fileName = Main.filePath+"\\Teachers.txt";
 	
 	static int counter = 0;
 	

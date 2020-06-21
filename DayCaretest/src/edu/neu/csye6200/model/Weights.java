@@ -1,5 +1,8 @@
 package edu.neu.csye6200.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Weights {
 	
 		private int groupsize;
@@ -14,57 +17,74 @@ public class Weights {
 			this.maxgroup = maxgroup;
 			this.category = category;
 		}
-
-
+		
+		
+	static List<Weights> weightRules = new ArrayList<>();
+	 
+        public static void addWeights(List<Weights> obj){
+            weightRules.addAll(obj);
+        }
 		public static Weights getclasstype(int age) {
+		
+//		weightRules = new FileIO().readWeightCSV("‪C:\\Users\\yccha\\Documents\\NetBeansProjects\\DayCare\\weights.txt");
+		
 			if(age>=6 && age<=12) {
-				return new Weights(4, 0.25, 3, 1);
+				return weightRules.get(0);
 			}
 			if(age>=13 && age<=24) {
-				return new Weights(5, 0.20, 3, 2);
+				return weightRules.get(1);
 			}if(age>=25 && age<=35) {
-				return new Weights(6, 0.16, 3, 3);
+				return weightRules.get(2);
 			}if(age>=36 && age<=47) {
-				return new Weights(8, 0.12, 3, 4);
+				return weightRules.get(3);
 			}if(age>=48 && age<=59) {
-				return new Weights(12, 0.08, 2, 5);
+				return weightRules.get(4);
 			}if(age>= 60) {
-				return new Weights(15, 0.06, 2, 6);
+				return weightRules.get(5);
 			}
-			return null;
+			else {
+			
+				System.out.println("Age out of limit");
+				return null;
+			}
 		}
+	
 
 		public static int getmaxstudents(int age) {
-			if(age>=6 && age<=12) {
-				return 12;
+//			FileIO obj = new FileIO();
+//			weightRules = obj.readWeightCSV("C:\\Users\\yccha\\Documents\\NetBeansProjects\\DayCare\\weights.txt");
+			if(age>=6 && age<=12) { 
+				return ((weightRules.get(0).groupsize) * (weightRules.get(0).maxgroup)) ;
 			}
 			if(age>=13 && age<=24) {
-				return 15;
+				return ((weightRules.get(1).groupsize) * (weightRules.get(1).maxgroup));
 			}if(age>=25 && age<=35) {
-				return 18;
+				return ((weightRules.get(2).groupsize) * (weightRules.get(2).maxgroup));
 			}if(age>=36 && age<=47) {
-				return 24;
+				return ((weightRules.get(3).groupsize) * (weightRules.get(3).maxgroup));
 			}if(age>=48 && age<=59) {
-				return 24;
+				return ((weightRules.get(4).groupsize) * (weightRules.get(4).maxgroup));
 			}if(age>= 60) {
-				return 30;
+				return ((weightRules.get(5).groupsize) * (weightRules.get(5).maxgroup));
 			}
 			return 0;
 		}
 		public static int getmaxgroup(int age) {
+//                   FileIO obj = new FileIO();
+//			weightRules = obj.readWeightCSV("C:\\Users\\yccha\\Documents\\NetBeansProjects\\DayCare\\weights.txt");
 			if(age>=6 && age<=12) {
-				return 4;
+				return weightRules.get(0).groupsize;
 			}
 			if(age>=13 && age<=24) {
-				return 5;
+				return weightRules.get(1).groupsize;
 			}if(age>=25 && age<=35) {
-				return 6;
+				return weightRules.get(2).groupsize;
 			}if(age>=36 && age<=47) {
-				return 8;
+				return weightRules.get(3).groupsize;
 			}if(age>=48 && age<=59) {
-				return 12;
+				return weightRules.get(4).groupsize;
 			}if(age>= 60) {
-				return 15;
+				return weightRules.get(5).groupsize;
 			}
 			return 0;
 		}
@@ -108,3 +128,4 @@ public class Weights {
 		}
 		
 }
+

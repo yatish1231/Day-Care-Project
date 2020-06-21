@@ -7,6 +7,7 @@ public class ImmunizationChecker {
 
 	
 	private int id;
+        private ImmunizationRules obj1 = new ImmunizationRules();
 	public int getId() {
 		return id;
 	}
@@ -55,7 +56,7 @@ public class ImmunizationChecker {
 	}
 
 
-	public List<ImmunizationChecker> checkStatus(ImmunizationRules obj1, List<Vaccine> obj2) {
+	public List<ImmunizationChecker> checkStatus(List<Vaccine> obj2) {
 		
 		List<ImmunizationChecker> checkList = new ArrayList<>();
 		
@@ -64,9 +65,9 @@ public class ImmunizationChecker {
 			int vaccineID = temp.getId();
 			
 			
-			if(temp.getDosage() < obj1.getImmunizationRules().get(vaccineID).getDosage()) {
+			if(temp.getDosage() <= obj1.getImmunizationRules().get(vaccineID-1).getDosage()) {
 				
-				int pendingDoses = obj1.getImmunizationRules().get(vaccineID).getDosage() - temp.getDosage();
+				int pendingDoses = obj1.getImmunizationRules().get(vaccineID-1).getDosage() - temp.getDosage();
 				System.out.println("The student has to get " + pendingDoses + " more doses of " + temp.getVaccineName());
 				
 				checkList.add(new ImmunizationChecker(vaccineID,temp.getVaccineName(),pendingDoses));
@@ -74,9 +75,5 @@ public class ImmunizationChecker {
 		}
 		return checkList;
 	}
-	
-	
-	
-	
-	
+
 }
